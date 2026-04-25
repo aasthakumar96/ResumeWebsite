@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { profile } from "../data/portfolio";
 import { useTypewriter } from "../hooks/useTypewriter";
+import { SplineScene } from "@/components/ui/splite";
 
 const heroWords = ["UI/UX Designer", "Senior Frontend Developer", "AI Product Builder"];
 
@@ -40,8 +41,11 @@ export function HeroSection() {
         </div>
       </nav>
 
-      <div className="mx-auto mt-16 max-w-5xl text-center">
-        <div className="flex flex-col items-center">
+      {/* Two-column hero body */}
+      <div className="mx-auto mt-16 max-w-7xl flex flex-col lg:flex-row lg:items-center lg:gap-12">
+
+        {/* Left — text content */}
+        <div className="flex flex-1 flex-col items-start">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -56,7 +60,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.1 }}
-            className="mt-8 max-w-4xl font-display text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl"
+            className="mt-8 font-display text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl"
           >
             {profile.name}
             <span className="mt-4 block bg-[linear-gradient(135deg,#f59e0b_10%,#fb7185_52%,#38bdf8_100%)] bg-clip-text text-transparent">
@@ -69,7 +73,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="mt-10 max-w-4xl font-display text-xl font-medium leading-[1.5] tracking-[-0.02em] text-slate-200 sm:text-2xl lg:text-[1.7rem]"
+            className="mt-8 max-w-xl font-display text-xl font-medium leading-[1.5] tracking-[-0.02em] text-slate-200 sm:text-2xl"
           >
             <span className="bg-[linear-gradient(135deg,rgba(255,255,255,0.98)_0%,rgba(214,214,214,0.92)_52%,rgba(140,140,140,0.88)_100%)] bg-clip-text text-transparent">
               {profile.subtitle}
@@ -80,7 +84,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.3 }}
-            className="mt-8 flex flex-wrap justify-center gap-3"
+            className="mt-6 flex flex-wrap gap-3"
           >
             {profile.heroTags.map((tag) => (
               <span
@@ -96,7 +100,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.4 }}
-            className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center"
+            className="mt-8 flex flex-col gap-4 sm:flex-row"
           >
             <a
               href="#experience"
@@ -117,12 +121,12 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.5 }}
-            className="mt-10 grid w-full gap-6 sm:grid-cols-3"
+            className="mt-10 grid w-full gap-4 sm:grid-cols-3"
           >
             {[
               { label: "Experience", value: "8+ years" },
               { label: "Primary Stack", value: "React + TypeScript" },
-              { label: "Current Focus", value: "AI-forward UI systems" }
+              { label: "Current Focus", value: "AI-forward UI systems" },
             ].map((item) => (
               <div key={item.label} className="rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-md">
                 <p className="text-sm uppercase tracking-[0.2em] text-slate-400">{item.label}</p>
@@ -131,6 +135,20 @@ export function HeroSection() {
             ))}
           </motion.div>
         </div>
+
+        {/* Right — Spline 3D scene */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 0.3 }}
+          className="relative mt-12 h-[480px] w-full flex-1 lg:mt-0"
+        >
+          <SplineScene
+            scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+            className="h-full w-full"
+          />
+        </motion.div>
+
       </div>
     </section>
   );
